@@ -1,33 +1,48 @@
-var fromLetter = require("./letter.js");
-var array = [];
+var Letter = require("./letter.js");
+
 function Word(word) {
     this.word = word;
-    this.array = function(){
-        for (var i = 0; i < this.word.length; i++) {
-           var letter = new fromLetter.Letter(this.word.indexOf(i));
-           array.push();
+    this.array = [];
+    this.push = function () {
+        var wordArr = this.word.split("");
+        for (var i = 0; i < wordArr.length; i++) {
+            var letter = new Letter(wordArr[i]);
+            this.array.push(letter);
         }
-        return here;
     };
-    this.string = function() {
-        for(var i = 0; i<this.array.length; i++){
-        console.log(this.array[i].fromLetter.Letter.toString());
+    this.string = function () {
+        var arr = [];
+        for (var i = 0; i < this.array.length; i++) {
+            arr.push(this.array[i].toString());
         }
+         console.log(arr.join(" "));
     };
     this.argument = function(abc) {
         for(var i = 0; i < this.array.length; i++) {
-            fromLetter.Letter.check(abc)
+            this.array[i].check(abc);
         }
     };
 }
 
+module.exports = Word;
 
-//checking Word
-var please = new Word("please");
-var work = new Word("work");
 
-console.log(please);
-console.log("----------------------------");
-console.log(please.array());
-console.log("--------------------");
-console.log(please.string());
+
+//the below lines are checking that Word works with Letter/by itself
+//  var please = new Word("work");
+
+// console.log(please);
+// console.log("----------------------------");
+//  please.push();
+// console.log(please.array);
+//  please.string();
+// please.argument("w");
+// please.string();
+// please.argument("e");
+// please.string();
+// please.argument("r");
+// please.string();
+// please.argument("t");
+// please.string();
+// console.log(please.array);
+// console.log("--------------------");
